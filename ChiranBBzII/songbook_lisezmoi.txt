@@ -1,0 +1,28 @@
+Généralités
+
+Song book est un plugin dédié à la navigation et la lecture des fichiers de musiques de type abc, au travers d'une interface simple et intuitive. Le plugin contient deux parties distinctes.
+Un plugin de lecture de la bibliothèque des musiques dans le jeu, et un programme sous windows générant une biliothèque à partir de des vos fichiers abc, dans un format que le plugin pourra lire. Le programme externe est réalisé en tant que fichier HTA (VBScript) ainsi il vous est possible de vérifier sa sécurité.
+
+Installation
+- Si vous n'avez pas utilisé de plugin auparavant, il serait utile de lire ce post sur le forum officiel (http://forums.lotro.com/showthread.php?354331-Introduction-to-Lua-UI-scripts)
+- Dézippez l'archive dans votre répertoire Documents/The Lord of the Rings Online/Plugins
+- Si vous mettez à jour depuis une version précédente de ce plugin, vous devrez exécuter le fichier songbook.hta avant de pouvoir utiliser le plugin. Merci de suivre les instructions ci-dessous.
+
+Mode d'emploi
+- IMPORTANT - Avant de lancer le plugin, exécutez le fichier songbook.hta fourni à la racine du répertoire \Documents\The Lord of the Rings Online\Plugins\Chiran pour générer la bibliothèque des musiques présentes. Double cliquez sur le fichier ou faites un raccourci de cleui ci pour le lancer d'où vous le souhaitez. Vous devrez le relancer en cas de modification (ajout ou suppression de musiques) de voitre bibliothèque.
+- En jeu, pour lancer le plugin, tapez dans le chat'/plugins charger songbook' (sans les '').
+- Une fois la fenêtre affichée, cliquez sur le bouton M pour passer en mode Musique (Il faut avoir équiper un instrument auparavant).
+- Sélectionnez une chanson à jouer en cliquant dessus et appuyez sur le bouton Play (Forme de flêche a coté du bouton M). Il y a également des boutons pour le jeu synchro et pour le readycheck.
+- En cliquant sur la bordure en bas à droite, il est possible de redimensionner la fenêtre.
+- En cliquant sur le titre du plugin en haut vous pouvez déplacer la fenêtre.
+- En fermant la fenêtre, le plugin sauvegardera la taille et position.
+- A l'intérieur de la fenêtre vous pouvez redimensionner les sections répertoires, chansons et partitions avec les lignes de séparation.
+- Si la chanson contient plusieurs partitions, vous pouvez choisir et changer de partition en cliquant sur les petites flêches à coté des numéros (marqués X). Vous pourvez également cliquer sur la petite case en haut à droite pour afficher la section Partitions et choisir à partir de là.
+- Les Commandes personnelles peuvent être enchaînées en cycle grace à la molette de la souris lorsque vous passez le curseur sur le bouton "S" (raccourci pour l'anglais "Share")
+- La plupart des réponses à vos questions peuvent être trouvées à cette adresse : http://chiran.lotrointerface.com/portal.php?id=32&a=faq
+
+Liste des commandes en jeu
+- /songbook afficher - Afficher l'interface de SongBook
+- /songbook cacher - Cacher l'interface de SongBook
+- /songbook basculer - Basculer entre visible et caché
+- /songbook - Affiche la liste des commandes en jeu

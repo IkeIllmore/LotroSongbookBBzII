@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Plugin>
+	<Information>
+		<Name>SongbookBBz</Name>
+		<Author>Chiran/Nimelia/Zedrock</Author>
+		<Version>0.95b</Version>
+		<Image>ChiranBBz/songbookicon.jpg</Image>
+		<Description><![CDATA[SongbookBBz 0.95 beta 0.01 :
+Version history :
+
+0.01 (12/01/2018)
+
+- New Instruments Slots container with two display mode : 
+  * Free sizeable Instrument Slots container.
+  * Horizontal forced with horizontal scrollbar to access to instruments without resizing Songbook window width.
+
+- New Instrument equip guessing :  
+  * Adding Fiddle and Bassoon recognition.
+  * Accurate recognition for Instrument Name which following the LOTRO-Maestro typos. Especially for kind of bassoon, kind of fiddle, kind of harp, kind of cowbell and kind of lute.
+
+- Filters and Players list splited.
+
+- Timer position / Wrong Instrument warning Messages changing from Track list separator to new line added upon the Dir list header.
+
+- Minor changes : 
+  * Fix : bug when switching local FR/DE client in EN language.
+  * Main songbook window minimum size changes.
+  * Avoid songbook window to be resized beyond the user screen width and height.
+  * Hack : refresh the Players list when starting Songbook.
+  * User Players list is now refreshing when user leave himself or join himself a fellowship.
+  * Display the Fellowship leader with different font text in Players list.
+  * Hack : maintain aligned to right tracks list when scrolled.]]></Description>
+	</Information>
+	<Package>ChiranBBz.SongbookBBz.Main</Package>
+</Plugin>
