@@ -97,6 +97,7 @@ function SongbookWindow:Constructor()
 	self.maxTrackCount = 25; -- Assumed maximum number of track setups (adjust if necessary)
 	self.bFilter = false; -- show/hide filter UI -- ZEDMOD: Now,separate to Players list
 	self.bChiefMode = true; -- enables sync start shortcut, uses party object ( seems to work for FS leader )
+	self.bSoloMode = true; -- enables play start shortcut
 	self.bShowPlayers = true; -- show/hide players listbox (used to auto-hide, but disabled for now)
 	self.aFilteredIndices = {}; -- Array for filtered indices, k = display index; v = SongDB index
 	self.aPlayers = {}; -- k = player name, v = ready track, 0 if no track ready
@@ -2689,6 +2690,7 @@ function SongbookWindow:SaveSettings()
 	Settings.ToggleOpacity = tostring( Settings.ToggleOpacity );
 	Settings.FiltersState = tostring( self.bFilter );
 	Settings.ChiefMode = tostring( self.bChiefMode );
+	Settings.SoloMode = tostring( self.bSoloMode );
 	Settings.TimerState = tostring( self.bTimer );
 	Settings.TimerCountdown = tostring( self.bTimerCountdown );
 	Settings.ReadyColState = tostring( self.bShowReadyChars );
@@ -3804,6 +3806,15 @@ function SongbookWindow:SetChiefMode( bState )
 	self.bChiefMode = ( bState == true );
 	self.syncStartSlot:SetVisible( self.bChiefMode );
 	self.syncStartIcon:SetVisible( self.bChiefMode );
+end
+
+--------------------
+-- Set Solo Mode --
+--------------------
+function SongbookWindow:SetSoloMode( bState )
+	self.bSoloMode = ( bState == true );
+	self.playSlot:SetVisible( self.bSoloMode );
+	self.playIcon:SetVisible( self.bSoloMode );
 end
 
 -- ZEDMOD

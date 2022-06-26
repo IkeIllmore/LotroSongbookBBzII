@@ -44,4 +44,4 @@ function songbookCommand:GetHelp()
 	Turbine.Shell.WriteLine( Strings["sh_help3"] );
 end
 Turbine.Shell.AddCommand( "songbookbbzii", songbookCommand );
-Turbine.Shell.WriteLine( "SongbookBBzII v"..Plugins["SongbookBBzII"]:GetVersion().." (0.92 Chiran + 0.01a The Brandy Badgers + 0.01b Zedrock)" );
+Turbine.Shell.WriteLine( "SongbookBBzII v"..Plugins["SongbookBBzII"]:GetVersion().." (0.92 Chiran + 0.01a The Brandy Badgers + 0.01b Zedrock + 0.01c Ike Illmore)" );

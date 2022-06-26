@@ -100,6 +100,12 @@ function SettingsWindow:Constructor()
 		songbookWindow:SetChiefMode( sender:IsChecked() );
 	end, 120 );
 	
+	-- Checkbox : Solo mode - uses party object, enables sync start quickslot
+	self.soloCheck = self:CreateCheckBox( "cb_solo", self.yPos, Settings.SoloMode, 
+	function( sender, args )
+		songbookWindow:SetSoloMode( sender:IsChecked() );
+	end, 140, 170 );
+	
 	-- Checkbox : Badger Filters On/Off
 	self.filterCheck = self:CreateCheckBox( "filters", self:NextPos(), Settings.FiltersState, 
 	function( sender, args )

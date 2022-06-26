@@ -60,6 +60,7 @@ if ( lang == "en" ) then
 	Strings["chat_playerLeaveSelf"] = " leave your"; -- ZEDMOD
 	Strings["ui_badger"] = "Badger settings";
 	Strings["cb_chief"] = "Chief mode";
+	Strings["cb_solo"] = "Solo mode";
 	Strings["cb_timer"] = "Show timer";
 	Strings["cb_timerDown"] = "Count down";
 	Strings["cb_rdyCol"] = "Sync column";
@@ -164,6 +165,7 @@ elseif ( lang == "de" ) then
 	Strings["chat_playerLeaveSelf"] = " verlasst Eure Gruppe"; -- ZEDMOD
 	Strings["ui_badger"] = "Badger-Einstellungen";
 	Strings["cb_chief"] = "Bandleader";
+	Strings["cb_solo"] = "Solo-modus";
 	Strings["cb_timer"] = "Laufzeit";
 	Strings["cb_timerDown"] = "R\195\188ckw\195\164rts";
 	Strings["cb_rdyCol"] = "Sync-Spalte";
@@ -267,6 +269,7 @@ elseif ( lang == "fr" ) then
 	Strings["chat_playerLeaveSelf"] = " quittez votre "; -- ZEDMOD
 	Strings["ui_badger"] = "Param\195\168tres Badger";
 	Strings["cb_chief"] = "Mode Chef";
+	Strings["cb_solo"] = "Mode solo";
 	Strings["cb_timer"] = "Voir compteur";
 	Strings["cb_timerDown"] = "D\195\169compter";
 	Strings["cb_rdyCol"] = "Colonne Synch"; -- Note: This needs to be rather short (two checkboxes on the same line)
