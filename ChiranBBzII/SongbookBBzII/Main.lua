@@ -2,25 +2,25 @@ import "Turbine.UI";
 import "Turbine.UI.Lotro";
 import "Turbine.Gameplay" -- needed for access to party object
 -- Some global variables to differentiate between the patch version and the alternate (BB) version
-gPlugin = "SongbookBBz"
-gDir = "ChiranBBz/SongbookBBz/"
+gPlugin = "SongbookBBzII"
+gDir = "ChiranBBzII/SongbookBBzII/"
 gSettings = "SongbookSettingsBBz"
-import "ChiranBBz.SongbookBBz.Class"; -- Turbine library included so that there's no outside dependencies
-import "ChiranBBz.SongbookBBz.ToggleWindow";
-import "ChiranBBz.SongbookBBz.SettingsWindow";
-import "ChiranBBz.SongbookBBz.SongbookLang";
-import "ChiranBBz.SongbookBBz.Instrumentsz"; -- ZEDMOD
-import "ChiranBBz.SongbookBBz";
+import "ChiranBBzII.SongbookBBzII.Class"; -- Turbine library included so that there's no outside dependencies
+import "ChiranBBzII.SongbookBBzII.ToggleWindow";
+import "ChiranBBzII.SongbookBBzII.SettingsWindow";
+import "ChiranBBzII.SongbookBBzII.SongbookLang";
+import "ChiranBBzII.SongbookBBzII.Instrumentsz"; -- ZEDMOD
+import "ChiranBBzII.SongbookBBzII";
 
-songbookWindow = ChiranBBz.SongbookBBz.SongbookWindow();
+songbookWindow = ChiranBBzII.SongbookBBzII.SongbookWindow();
 if ( Settings.WindowVisible == "yes" ) then
 	songbookWindow:SetVisible( true );
 else
 	songbookWindow:SetVisible( false );
 end
-settingsWindow = ChiranBBz.SongbookBBz.SettingsWindow();
+settingsWindow = ChiranBBzII.SongbookBBzII.SettingsWindow();
 settingsWindow:SetVisible( false );
-toggleWindow = ChiranBBz.SongbookBBz.ToggleWindow();
+toggleWindow = ChiranBBzII.SongbookBBzII.ToggleWindow();
 if ( Settings.ToggleVisible == "yes" ) then
 	toggleWindow:SetVisible( true );
 else 
@@ -43,5 +43,5 @@ function songbookCommand:GetHelp()
 	Turbine.Shell.WriteLine( Strings["sh_help2"] );
 	Turbine.Shell.WriteLine( Strings["sh_help3"] );
 end
-Turbine.Shell.AddCommand( "songbookbbz", songbookCommand );
-Turbine.Shell.WriteLine( "SongbookBBz v"..Plugins["SongbookBBz"]:GetVersion().." (0.92 Chiran + 0.01a The Brandy Badgers + 0.01b Zedrock)" );
+Turbine.Shell.AddCommand( "songbookbbzii", songbookCommand );
+Turbine.Shell.WriteLine( "SongbookBBzII v"..Plugins["SongbookBBzII"]:GetVersion().." (0.92 Chiran + 0.01a The Brandy Badgers + 0.01b Zedrock)" );

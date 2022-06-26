@@ -20,13 +20,13 @@ function ToggleWindow:Constructor()
 	self.button:SetPosition( 0, 0 );
 	self.button:SetSize( 35, 35 );
 	self.button:SetBlendMode( Turbine.UI.BlendMode.AlphaBlend );
-	self.button:SetBackground( "ChiranBBz/SongbookBBz/toggle.tga" );
+	self.button:SetBackground( "ChiranBBzII/SongbookBBzII/toggle.tga" );
 	self.button.MouseEnter = function( sender, args )
-		self.button:SetBackground( "ChiranBBz/SongbookBBz/toggle_hover.tga" );
+		self.button:SetBackground( "ChiranBBzII/SongbookBBzII/toggle_hover.tga" );
 		self:SetOpacity( 0.9 );
 	end
 	self.button.MouseLeave = function( sender, args )
-		self.button:SetBackground( "ChiranBBz/SongbookBBz/toggle.tga" );
+		self.button:SetBackground( "ChiranBBzII/SongbookBBzII/toggle.tga" );
 		self:SetOpacity( Settings.ToggleOpacity );
 	end
 	self.button.MouseDown = function( sender, args )

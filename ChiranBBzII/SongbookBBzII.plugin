@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <Plugin>
 	<Information>
-		<Name>SongbookBBz</Name>
-		<Author>Chiran/Nimelia/Zedrock</Author>
-		<Version>0.95b</Version>
-		<Image>ChiranBBz/songbookicon.jpg</Image>
-		<Description><![CDATA[SongbookBBz 0.95 beta 0.01 :
+		<Name>SongbookBBzII</Name>
+		<Author>Chiran/Nimelia/Zedrock/Ike Illmore</Author>
+		<Version>0.95c</Version>
+		<Image>ChiranBBzII/songbookicon.jpg</Image>
+		<Description><![CDATA[SongbookBBz 0.95c beta 0.01 :
 Version history :
 
 0.01 (12/01/2018)
@@ -31,5 +31,5 @@ Version history :
   * Display the Fellowship leader with different font text in Players list.
   * Hack : maintain aligned to right tracks list when scrolled.]]></Description>
 	</Information>
-	<Package>ChiranBBz.SongbookBBz.Main</Package>
+	<Package>ChiranBBzII.SongbookBBzII.Main</Package>
 </Plugin>
