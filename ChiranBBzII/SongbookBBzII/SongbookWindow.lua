@@ -662,6 +662,11 @@ function SongbookWindow:Constructor()
 	--*****************
 	self:SetChiefMode( Settings.ChiefMode == "true" );
 	
+	--*****************
+	--* Solo Minimum *
+	--*****************
+	self:SetSoloMode( Settings.SoloMode == "true" );
+
 	--************
 	--* Timer UI *
 	--************
@@ -1745,6 +1750,9 @@ function SongbookWindow:FixIfNotSettings( Settings, SongDB, CharSettings )
 	end
 	if ( not Settings.ChiefMode ) then
 		Settings.ChiefMode = "true";
+	end
+	if ( not Settings.SoloMode ) then
+		Settings.SoloMode = "true";
 	end
 	if ( not Settings.TimerState ) then
 		Settings.TimerState = "true"; -- ZEDMOD: OriginalBB value: false

@@ -100,7 +100,7 @@ function SettingsWindow:Constructor()
 		songbookWindow:SetChiefMode( sender:IsChecked() );
 	end, 120 );
 	
-	-- Checkbox : Solo mode - uses party object, enables sync start quickslot
+	-- Checkbox : Solo mode - uses party object, enables play quickslot
 	self.soloCheck = self:CreateCheckBox( "cb_solo", self.yPos, Settings.SoloMode, 
 	function( sender, args )
 		songbookWindow:SetSoloMode( sender:IsChecked() );
