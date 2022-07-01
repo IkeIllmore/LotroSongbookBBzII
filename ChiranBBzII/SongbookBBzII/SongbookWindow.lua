@@ -2048,7 +2048,7 @@ function SongbookWindow:SelectTrack( trackId )
 	self.songTitle:SetText( SongDB.Songs[selectedSongIndex].Tracks[iTrack].Name );
 	self.playSlotShortcut = Turbine.UI.Lotro.Shortcut( Turbine.UI.Lotro.ShortcutType.Alias, Strings["cmd_play"] .. " \"" .. SongDB.Songs[selectedSongIndex].Filepath .. selectedSong .. "\" " .. SongDB.Songs[selectedSongIndex].Tracks[iTrack].Id );
 	self.playSlot:SetShortcut( self.playSlotShortcut );
-	self.playSlot:SetVisible( true );
+	self.playSlot:SetVisible( Settings.SoloMode == "true" );
 	self.syncSlotShortcut = Turbine.UI.Lotro.Shortcut( Turbine.UI.Lotro.ShortcutType.Alias, Strings["cmd_play"] .. " \"" .. SongDB.Songs[selectedSongIndex].Filepath .. selectedSong .. "\" " .. SongDB.Songs[selectedSongIndex].Tracks[iTrack].Id .. " " .. Strings["cmd_sync"] );
 	self.syncSlot:SetShortcut( self.syncSlotShortcut );
 	self.syncSlot:SetVisible( true );
