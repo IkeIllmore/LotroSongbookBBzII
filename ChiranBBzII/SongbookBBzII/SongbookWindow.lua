@@ -59,6 +59,8 @@ librarySize = 0;
 
 -- Song
 selectedSong = ""; -- set the default song
+selectedSongText = ""; -- II Timer Mod
+playingSongText = ""; -- II Timer Mod
 selectedSongIndex = 1;
 
 -- Track
@@ -1929,6 +1931,7 @@ function SongbookWindow:SelectSong( iSong )
 	self:SetListboxColours( self.songlistBox ); --, iSong )
 	selectedSongIndex = self.aFilteredIndices[iSong];
 	selectedSong = SongDB.Songs[selectedSongIndex].Filename;
+	selectedSongText = string.sub(SongDB.Songs[selectedSongIndex].Tracks[1].Name, 1, 10); -- get first n characters of song name -- II Timer Bodge
 	if ( SongDB.Songs[selectedSongIndex].Tracks[1].Name ~= "" ) then
 		self.songTitle:SetText( SongDB.Songs[selectedSongIndex].Tracks[1].Name );
 	else
@@ -2187,8 +2190,13 @@ end
 -- Set Timer
 function SongbookWindow:SetTimer( value )
 	local mins = math.floor( value / 60 );
-	--self.tracksMsg:SetText( string.format( "%u:%02u", mins, value - mins * 60 ) ); -- ZEDMOD: OriginalBB
-	self.msg:SetText( string.format( "%u:%02u", mins, value - mins * 60 ) ); -- ZEDMOD
+	if playingSongText ~= nil then
+		--self.tracksMsg:SetText( string.format("%10s %u:%02u", playingSongText, mins, value - mins * 60 ) );  -- II Timer Mod
+		self.msg:SetText( string.format( "%10s %u:%02u", playingSongText, mins, value - mins * 60 ) ); -- ZEDMOD -- II Timer Mod
+	else
+		--self.tracksMsg:SetText( string.format( "%u:%02u", mins, value - mins * 60 ) ); -- ZEDMOD: OriginalBB
+		self.msg:SetText( string.format( "%u:%02u", mins, value - mins * 60 ) ); -- ZEDMOD
+	end
 end
 
 -- Start Timer
@@ -2214,6 +2222,10 @@ function SongbookWindow:StartTimer()
 	else
 		self.currentTime = 0;
 	end
+
+	playingSongText = selectedSongText; -- II Timer Mod
+	selectedSongText = ""; -- II Timer Mod
+
 	self:SetTimer( self.currentTime );
 	--self.tracksMsg:SetVisible( true ); -- ZEDMOD: OriginalBB
 	self.msg:SetVisible( true ); -- ZEDMOD
@@ -2953,6 +2965,7 @@ function ChatHandler( sender, args )
 	end
 	
 	local temp, sPlayerName, sTrackName;
+	-- look for another player sync'ing track and if find then extract player name and track name
 	temp, temp, sPlayerName, sTrackName = string.find( sMessage, Strings["chat_playReadyMsg"] );
 	if ( ( not sPlayerName ) or ( not sTrackName ) ) then
 		
@@ -2962,6 +2975,10 @@ function ChatHandler( sender, args )
 			sPlayerName = songbookWindow.sPlayerName -- ZEDMOD: OriginalBB
 		end
 		temp, temp, sTrackName = string.find( sMessage, Strings["chat_playSelfReadyMsg"] ); -- ZEDMOD: OriginalBB
+		if sTrackName ~= nil then
+	--		selectedSongText = sTrackName; -- II Timer Mod
+			selectedSongText = string.sub(sTrackName, 1, 10); -- get first n characters of song name -- II Timer Mod
+		end
 	end
 	
 	if ( ( sPlayerName ) and ( sTrackName ) and ( songbookWindow.aPlayers ) ) then
@@ -3223,7 +3240,7 @@ function SongbookWindow:SetInstrumentMessage( sInstr )
 		--self.tracksMsg:SetForeColor( self.colourDefault ); -- ZEDMOD: OriginalBB
 		self.msg:SetForeColor( self.colourDefault ); -- ZEDMOD
 		--self.tracksMsg:SetVisible( false ); -- ZEDMOD: OriginalBB
-		self.msg:SetVisible( false ); -- ZEDMOD
+-- II Timer Mod		self.msg:SetVisible( false ); -- ZEDMOD
 	else
 		--self.tracksMsg:SetForeColor( self.colourWrongInstrument ); -- ZEDMOD: OriginalBB
 		self.msg:SetForeColor( self.colourWrongInstrument ); -- ZEDMOD
