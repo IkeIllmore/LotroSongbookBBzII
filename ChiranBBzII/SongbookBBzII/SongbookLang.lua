@@ -38,6 +38,7 @@ if ( lang == "en" ) then
 	Strings["cb_desc"] = "Show song list description";
 	Strings["cb_descfirst"] = "In first";
 	Strings["cb_windowvis"] = "Window visible on load";
+	Strings["cb_lastdir"] = "Remember Last Directory";
 	Strings["cb_iconvis"] = "Songbook button visible";
 	Strings["cb_instrvis"] = "Show Instruments";
 	Strings["cb_instrvisHForced"] = "Horizontal"; -- ZEDMOD
@@ -143,6 +144,7 @@ elseif ( lang == "de" ) then
 	Strings["cb_desc"] = "Beschreibung Liedliste anzeigen";
 	Strings["cb_descfirst"] = "Zuerst";
 	Strings["cb_windowvis"] = "Fenster beim Start anzeigen";
+	Strings["cb_lastdir"] = "Last directory on load";
 	Strings["cb_iconvis"] = "Songbookknopf anzeigen";
 	Strings["cb_instrvis"] = "Instrumente anzeigen";
 	Strings["cb_instrvisHForced"] = "Horizontale"; -- ZEDMOD
@@ -247,6 +249,7 @@ elseif ( lang == "fr" ) then
 	Strings["cb_desc"] = "Description liste chansons";
 	Strings["cb_descfirst"] = "En premier";
 	Strings["cb_windowvis"] = "Fen\195\170tre visible au chargement";
+	Strings["cb_lastdir"] = "Last directory on load";
 	Strings["cb_iconvis"] = "Bouton SongBook visible";
 	Strings["cb_instrvis"] = "Instruments Visibles";
 	Strings["cb_instrvisHForced"] = "Horizontal"; -- ZEDMOD

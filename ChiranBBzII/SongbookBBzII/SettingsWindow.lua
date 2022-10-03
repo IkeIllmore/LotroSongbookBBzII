@@ -85,6 +85,12 @@ function SettingsWindow:Constructor()
 		self:ChangeVisibility();
 	end );
 	
+	-- Checkbox : Last Directory on Load
+	self.descFirstCheck = self:CreateCheckBox( "cb_lastdir", self.yPos, Settings.LastDirOnLoad, 
+	function( sender, args )
+		songbookWindow:ToggleLastDirOnLoad();
+	end, 150, 250 );
+	
 	-- Badger Settings
 	self.badgerLabel = Turbine.UI.Label();
 	self.badgerLabel:SetParent( self );
