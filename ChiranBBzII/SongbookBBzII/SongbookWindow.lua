@@ -3310,7 +3310,11 @@ function SongbookWindow:SetInstrumentMessage( sInstr )
 		--self.tracksMsg:SetForeColor( self.colourWrongInstrument ); -- ZEDMOD: OriginalBB
 		self.msg:SetForeColor( self.colourWrongInstrument ); -- ZEDMOD
 		--self.tracksMsg:SetText( sInstr .. Strings["instr"] ); -- ZEDMOD: OriginalBB
-		self.msg:SetText( sInstr .. Strings["instr"] ); -- ZEDMOD
+		if sInstr ~= nil then
+			self.msg:SetText( sInstr .. Strings["instr"] ); -- ZEDMOD
+		else
+			self.msg:SetText( "Unknown" .. Strings["instr"] ); -- ZEDMOD
+		end
 		--self.tracksMsg:SetVisible( true ); -- ZEDMOD: OriginalBB
 		self.msg:SetVisible( true ); -- ZEDMOD
 	end
