@@ -1,5 +1,12 @@
 SettingsWindow = class( Turbine.UI.Lotro.Window );
 
+function CreateGroupLabelPos( parent, stringCode, xPos, yPos, width )
+	local label = CreateGroupLabel( parent, stringCode )
+	label:SetPosition( xPos, yPos );
+	label:SetWidth( width );
+	return label;
+end
+
 function SettingsWindow:NextPos( delta )
 	delta = delta or 20;
 	self.yPos = self.yPos + delta;
@@ -23,7 +30,6 @@ function SettingsWindow:Constructor()
 	Turbine.UI.Lotro.Window.Constructor( self );
 	local sCmd = 0;
 	
-	-- Nim: Fix location of settings window
 	local xPos, yPos;
 	local wndHeight = 585;
 	local displayWidth, displayHeight = Turbine.UI.Display.GetSize();
@@ -38,8 +44,6 @@ function SettingsWindow:Constructor()
 		yPos = Settings.WindowPosition.Top + 100;
 	end
 	self:SetPosition( xPos, yPos );
-	--self:SetPosition( Settings.WindowPosition.Left - 300, Settings.WindowPosition.Top + 100 ); -- Original
-	-- /Nim
 	
 	self:SetSize( 370, wndHeight );
 	self:SetZOrder( 20 );
@@ -47,13 +51,7 @@ function SettingsWindow:Constructor()
 	self.yPos = 20;
 	
 	-- General Settings Label
-	self.genLabel = Turbine.UI.Label();
-	self.genLabel:SetParent( self );
-	self.genLabel:SetPosition( 20, self:NextPos( 20 ) );
-	self.genLabel:SetWidth( 300 );
-	self.genLabel:SetForeColor( Turbine.UI.Color( 1, 0.77, 0.64, 0.22 ) );
-	self.genLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro16 );
-	self.genLabel:SetText( Strings["ui_general"] );
+	self.genLabel = CreateGroupLabelPos( self, "ui_general", 20, self:NextPos( 20 ), 300 );
 	
 	-- Checkbox : Track Display
 	self.trackCheck = self:CreateCheckBox( "cb_parts", self:NextPos( 20 ), Settings.TracksVisible, 
@@ -85,20 +83,8 @@ function SettingsWindow:Constructor()
 		self:ChangeVisibility();
 	end );
 	
-	-- Checkbox : Last Directory on Load
-	self.descFirstCheck = self:CreateCheckBox( "cb_lastdir", self.yPos, Settings.LastDirOnLoad, 
-	function( sender, args )
-		songbookWindow:ToggleLastDirOnLoad();
-	end, 150, 250 );
-	
 	-- Badger Settings
-	self.badgerLabel = Turbine.UI.Label();
-	self.badgerLabel:SetParent( self );
-	self.badgerLabel:SetPosition( 20, self:NextPos( 20 ) );
-	self.badgerLabel:SetWidth( 300 );
-	self.badgerLabel:SetForeColor( Turbine.UI.Color( 1, 0.77, 0.64, 0.22 ) );
-	self.badgerLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro16 );
-	self.badgerLabel:SetText( Strings["ui_badger"] );
+	self.badgerLabel = CreateGroupLabelPos( self, "ui_badger", 20, self:NextPos( 20 ), 300 );
 	
 	-- Checkbox : Chief mode - uses party object, enables sync start quickslot
 	self.chiefCheck = self:CreateCheckBox( "cb_chief", self:NextPos(), Settings.ChiefMode, 
@@ -106,10 +92,10 @@ function SettingsWindow:Constructor()
 		songbookWindow:SetChiefMode( sender:IsChecked() );
 	end, 120 );
 	
-	-- Checkbox : Solo mode - uses party object, enables play quickslot
-	self.soloCheck = self:CreateCheckBox( "cb_solo", self.yPos, Settings.SoloMode, 
+	-- Show or hide R,S buttons and track selector
+	self.showAllBtns = self:CreateCheckBox( "cb_buttons", self.yPos, Settings.ShowAllBtns, 
 	function( sender, args )
-		songbookWindow:SetSoloMode( sender:IsChecked() );
+		songbookWindow:ShowAllButtons( sender:IsChecked() );
 	end, 140, 170 );
 	
 	-- Checkbox : Badger Filters On/Off
@@ -155,14 +141,8 @@ function SettingsWindow:Constructor()
 	end
 	-- /Badger settings
 	
-	-- Songbook
-	self.sbbtnLabel = Turbine.UI.Label();
-	self.sbbtnLabel:SetParent( self );
-	self.sbbtnLabel:SetPosition( 20, self:NextPos() );
-	self.sbbtnLabel:SetWidth( 300 );
-	self.sbbtnLabel:SetForeColor( Turbine.UI.Color( 1, 0.77, 0.64, 0.22 ) );
-	self.sbbtnLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro16 );
-	self.sbbtnLabel:SetText( Strings["ui_icon"] );
+	-- Songbook button settings
+	self.sbbtnLabel = CreateGroupLabelPos( self, "ui_icon", 20, self:NextPos( 20 ), 300 );
 	
 	-- Checkbox : Songbook Button Visibility
 	self.toggleCheck = self:CreateCheckBox( "cb_iconvis", self:NextPos( 20 ), Settings.ToggleVisible, 
@@ -201,14 +181,8 @@ function SettingsWindow:Constructor()
 	self.toggleOpacityInd:SetForeColor( Turbine.UI.Color( 1, 0.77, 0.64, 0.22 ) );
 	self.toggleOpacityInd:SetText( Settings.ToggleOpacity );
 	
-	-- Instruments Settings
-	self.instrLabel = Turbine.UI.Label();
-	self.instrLabel:SetParent( self );
-	self.instrLabel:SetPosition( 20, self:NextPos( 20 ) );
-	self.instrLabel:SetWidth( 300 );
-	self.instrLabel:SetForeColor( Turbine.UI.Color( 1, 0.77, 0.64, 0.22 ) );
-	self.instrLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro16 );
-	self.instrLabel:SetText( Strings["ui_instr"] );
+	-- Instruments Slots Settings
+	self.instrLabel = CreateGroupLabelPos( self, "ui_instr", 20, self:NextPos( 20 ), 300 );
 	
 	-- ZEDMOD: Checkbox : Instrumentlist Visibility Force Horizontal
 	self.instrVisHForced = self:CreateCheckBox( "cb_instrvisHForced", self:NextPos( 20 ), CharSettings.InstrSlots["visHForced"], 
@@ -255,14 +229,8 @@ function SettingsWindow:Constructor()
 		songbookWindow:DelSlot();
 	end
 	
-	-- Commands Label
-	self.cmdLabel = Turbine.UI.Label();
-	self.cmdLabel:SetParent( self );
-	self.cmdLabel:SetPosition( 20, self:NextPos( 30 ) );
-	self.cmdLabel:SetWidth( 300 );
-	self.cmdLabel:SetForeColor( Turbine.UI.Color( 1, 0.77, 0.64, 0.22 ) );
-	self.cmdLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro16 );
-	self.cmdLabel:SetText( Strings["ui_custom"] );
+	-- Custom Commands 
+	self.cmdLabel = CreateGroupLabelPos( self, "ui_custom", 20, self:NextPos( 30 ), 300 );
 	
 	-- Button : Add Command
 	self.addBtn = Turbine.UI.Lotro.Button();
@@ -382,7 +350,7 @@ function SettingsWindow:Constructor()
 	
 	-- Timer : Toggle Timer
 	function self:ToggleTimer( bChecked )
-		songbookWindow:ActivateTimer( bChecked )
+		songbookWindow:ActivateCounter( bChecked )
 		self.countdownCheck:SetVisible( bChecked )
 	end
 	

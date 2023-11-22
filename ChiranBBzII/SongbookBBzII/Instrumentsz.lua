@@ -36,7 +36,7 @@ function CheckInstruments( sTrack )
 	
 	-- Get Player Instrument SongBook (SB) Internal Index and SB Generic Name
 	local PlayerInstrumentSBIndex = PlayerInstrumentLOCIndex;
-	local PlayerInstrumentSBGenericName = songbookWindow.aInstruments[PlayerInstrumentSBIndex];
+	local PlayerInstrumentSBGenericName = Instruments.aInstruments[PlayerInstrumentSBIndex];
 	
 	-- Get Player Instrument LOC/SB Type Index and LOC/SB Type Name
 	local PlayerInstrumentLOCTypeIndex, PlayerInstrumentLOCTypeName, PlayerInstrumentSBTypeIndex, PlayerInstrumentSBTypeName = GetPlayerInstrumentLOCSBType( PlayerInstrumentLOCIndex, PlayerInstrumentLOCCleanName );
@@ -61,14 +61,14 @@ function CheckInstruments( sTrack )
 	-- First, try to get Local Instrument
 	TrackInstrumentLOCIndex, TrackInstrumentLOCGenericName, TrackInstrumentLOCTypeIndex, TrackInstrumentLOCTypeName = GetTrackInstrument( sCleanTrack, aInstrumentsLang );
 	TrackInstrumentSBIndex = TrackInstrumentLOCIndex;
-	TrackInstrumentSBGenericName = songbookWindow.aInstruments[TrackInstrumentSBIndex];
+	TrackInstrumentSBGenericName = Instruments.aInstruments[TrackInstrumentSBIndex];
 	TrackInstrumentSBTypeIndex = TrackInstrumentLOCTypeIndex;
 	if ( TrackInstrumentSBTypeIndex == 1 ) then
 		TrackInstrumentSBTypeName = TrackInstrumentSBGenericName;
 	end
 	if ( not TrackInstrumentLOCIndex ) then
 		-- Try to get Songbook Internal Instrument
-		aInstrumentsLang = 1; -- set to 1 for songbookWindow.aInstruments
+		aInstrumentsLang = 1; -- set to 1 for Instruments.aInstruments
 		TrackInstrumentSBIndex, TrackInstrumentSBGenericName, TrackInstrumentSBTypeIndex, TrackInstrumentSBTypeName = GetTrackInstrument( sCleanTrack, aInstrumentsLang );
 		if ( TrackInstrumentSBIndex == 6 ) then
 			if ( PlayerInstrumentLOCGenericName == "geige" ) then
@@ -107,26 +107,27 @@ function CheckInstruments( sTrack )
 	--**************************
 	--* Set Instrument Message *
 	--**************************
-	-- If Track Instrument is Type 2 : Bassoon
-	if ( TrackInstrumentLOCIndex == 2 ) then
+	-- If Track Instrument is Type 2 : Bassoon 
+	if ( TrackInstrumentLOCIndex == Instruments.variants.aIdx["bassoon"] ) then -- (Nim) switched from num constant to map
 		songbookWindow:SetInstrumentMessage( aInstrumentsLocBassoon[TrackInstrumentLOCTypeIndex] );
 	-- If Track Instrument is Type 4 : Cowbell
-	elseif ( TrackInstrumentLOCIndex == 4 ) then
+	elseif ( TrackInstrumentLOCIndex == Instruments.variants.aIdx["cowbell"] ) then
 		songbookWindow:SetInstrumentMessage( aInstrumentsLocCowbell[TrackInstrumentLOCTypeIndex] );
 	-- If Track Instrument is Type 6 : Fiddle
-	elseif ( ( TrackInstrumentLOCIndex == 6 ) or ( TrackInstrumentLOCIndex == 7 ) ) then
+	elseif ( ( TrackInstrumentLOCIndex == Instruments.variants.aIdx["fiddle"] ) ) then
 		songbookWindow:SetInstrumentMessage( aInstrumentsLocFiddle[TrackInstrumentLOCTypeIndex] );
 	-- If Track Instrument is Type 9 : Harp
-	elseif ( TrackInstrumentLOCIndex == 9 ) then
+	elseif ( TrackInstrumentLOCIndex == Instruments.variants.aIdx["harp"] ) then
 		songbookWindow:SetInstrumentMessage( aInstrumentsLocHarp[TrackInstrumentLOCTypeIndex] );
 	-- If Track Instrument is Type 11 : Lute
-	elseif ( TrackInstrumentLOCIndex == 11 ) then
+	elseif ( TrackInstrumentLOCIndex == Instruments.variants.aIdx["lute"] ) then
 		songbookWindow:SetInstrumentMessage( aInstrumentsLocLute[TrackInstrumentLOCTypeIndex] );
 	-- If Track Instrument is other Type
 	else
 		songbookWindow:SetInstrumentMessage( aInstrumentsLoc[TrackInstrumentLOCIndex] );
 	end
 end
+
 
 ------------------
 -- Clean String --
@@ -213,6 +214,11 @@ function GetPlayerInstrumentLOC( sName )
 			return index, name;
 		end
 	end
+	for name, index in pairs( Instruments.aSpecialInstruments ) do
+		if ( sName:find( name ) ) then
+			return index, aInstrumentsLoc[ index ];
+		end
+	end
 	return nil, nil;
 end
 
@@ -224,32 +230,32 @@ function GetPlayerInstrumentLOCSBType( iIndex, sName )
 	-- Set aInstrumentsLOCType and aInstrumentsSBType
 	local aInstrumentsLOCType, aInstrumentsSBType = nil;
 	-- If Instrument Name is bassoon or basson or fagott : index = 2
-	if ( iIndex == 2 ) then -- Bassoon
+	if ( iIndex == Instruments.variants.aIdx["bassoon"] ) then -- Bassoon
 		aInstrumentsLOCType = aInstrumentsLocBassoon;
-		aInstrumentsSBType = songbookWindow.aInstrumentsBassoon;
+		aInstrumentsSBType = Instruments.variants.aBassoon;
 	
 	-- If Instrument Name is Cowbell or Cloche or Glocke : index = 4
-	elseif ( iIndex == 4 ) then -- Cowbell
+	elseif ( iIndex == Instruments.variants.aIdx["cowbell"] ) then -- Cowbell
 		aInstrumentsLOCType = aInstrumentsLocCowbell;
-		aInstrumentsSBType = songbookWindow.aInstrumentsCowbell;
+		aInstrumentsSBType = Instruments.variants.aCowbell;
 		
 	-- If Instrument Name is fiddle or violon or fiedel or geige : index = 6 or 7
-	elseif ( iIndex == 6 ) or ( iIndex == 7 ) then -- Fiddle
+	elseif ( iIndex == Instruments.variants.aIdx["fiddle"] ) then -- Fiddle
 		aInstrumentsLOCType = aInstrumentsLocFiddle;
-		aInstrumentsSBType = songbookWindow.aInstrumentsFiddle;
+		aInstrumentsSBType = Instruments.variants.aFiddle;
 	
 	-- If Instrument Name is harp or harpe or harfe : index = 9
-	elseif ( iIndex == 9 ) then -- Harp
+	elseif ( iIndex == Instruments.variants.aIdx["harp"] ) then -- Harp
 		aInstrumentsLOCType = aInstrumentsLocHarp;
-		aInstrumentsSBType = songbookWindow.aInstrumentsHarp;
+		aInstrumentsSBType = Instruments.variants.aHarp;
 		
 	-- If Instrument Name is Lute or luth or laute : index = 11
-	elseif ( iIndex == 11 ) then -- Lute
+	elseif ( iIndex == Instruments.variants.aIdx["lute"] ) then -- Lute
 		aInstrumentsLOCType = aInstrumentsLocLute;
-		aInstrumentsSBType = songbookWindow.aInstrumentsLute;
+		aInstrumentsSBType = Instruments.variants.aLute;
 	else
-		aInstrumentsLOCType = songbookWindow.aInstruments;
-		aInstrumentsSBType = songbookWindow.aInstruments;
+		aInstrumentsLOCType = Instruments.aInstruments;
+		aInstrumentsSBType = Instruments.aInstruments;
 	end
 	
 	-- Get Instrument LOC Type Index and LOC Type Name from LOC Name
@@ -261,7 +267,7 @@ function GetPlayerInstrumentLOCSBType( iIndex, sName )
 		instrumentSBTypeIndex = 1;
 		instrumentSBTypeName = nil;
 	else
-		instrumentSBTypeName = songbookWindow.aInstruments[instrumentSBTypeIndex];
+		instrumentSBTypeName = Instruments.aInstruments[instrumentSBTypeIndex];
 	end
 	return instrumentLOCTypeIndex, instrumentLOCTypeName, instrumentSBTypeIndex, instrumentSBTypeName
 end
@@ -284,26 +290,26 @@ end
 -- Get Track Instrument LOC/SB --
 ---------------------------------
 function GetTrackInstrument( sTrack, aInstrumentsLang )
-	
 	-- Set aInstruments
 	local aInstruments, aInstrumentsType = nil;
 	if ( aInstrumentsLang == 0 ) then
 		aInstruments = aInstrumentsLoc;
 	else
-		aInstruments = songbookWindow.aInstruments;
+		aInstruments = Instruments.aInstruments;
 	end
 	
 	-- Get Track Instrument Index and Name
 	local TrackInstrumentIndex, TrackInstrumentName = GetInstrument( sTrack, aInstruments );
-	
+
 	-- Search Instrument Name
 	local searchString = nil;
 	local sString = nil;
 	if ( ( TrackInstrumentName == "bassoon" ) or ( TrackInstrumentName == "basson" ) or ( TrackInstrumentName == "fagott" ) )then
 		if ( TrackInstrumentName == "bassoon" ) then
 			if ( not searchString ) then
-				sString = "lonely";
-				searchString = string.find( sTrack, sString );
+				sString = "lonely mountain bassoon";
+				searchString = FindInstrWithSynonyms( sTrack, sString )
+				--searchString = string.find( sTrack, sString );
 			end
 			if ( not searchString ) then
 				sString = "brusque";
@@ -331,7 +337,7 @@ function GetTrackInstrument( sTrack, aInstrumentsLang )
 		if ( aInstrumentsLang == 0 ) then
 			aInstrumentsType = aInstrumentsLocBassoon;
 		else
-			aInstrumentsType = songbookWindow.aInstrumentsBassoon;
+			aInstrumentsType = Instruments.variants.aBassoon;
 		end
 	elseif ( ( TrackInstrumentName == "cowbell" ) or ( TrackInstrumentName == "cloche" ) or ( TrackInstrumentName == "glocke" ) ) then
 		if ( TrackInstrumentName == "cowbell" ) then
@@ -353,7 +359,7 @@ function GetTrackInstrument( sTrack, aInstrumentsLang )
 		if ( aInstrumentsLang == 0 ) then
 			aInstrumentsType = aInstrumentsLocCowbell;
 		else
-			aInstrumentsType = songbookWindow.aInstrumentsCowbell;
+			aInstrumentsType = Instruments.variants.aCowbell;
 		end
 	elseif ( ( TrackInstrumentName == "fiddle" ) or ( TrackInstrumentName == "violon" ) or ( TrackInstrumentName == "fiedel" ) or ( TrackInstrumentName == "geige" ) ) then
 		if ( TrackInstrumentName == "fiddle" ) then
@@ -362,16 +368,18 @@ function GetTrackInstrument( sTrack, aInstrumentsLang )
 				searchString = string.find( sTrack, sString );
 			end
 			if ( not searchString ) then
-				sString = "traveller";
-				searchString = string.find( sTrack, sString );
+				sString = "traveller's trusty fiddle";
+				searchString = FindInstrWithSynonyms( sTrack, sString )
+				--searchString = string.find( sTrack, sString );
 			end
 			if ( not searchString ) then
 				sString = "sprightly";
 				searchString = string.find( sTrack, sString );
 			end
 			if ( not searchString ) then
-				sString = "lonely";
-				searchString = string.find( sTrack, sString );
+				sString = "lonely mountain fiddle";
+				searchString = FindInstrWithSynonyms( sTrack, sString )
+				--searchString = string.find( sTrack, sString );
 			end
 			if ( not searchString ) then
 				sString = "bardic";
@@ -423,13 +431,14 @@ function GetTrackInstrument( sTrack, aInstrumentsLang )
 		if ( aInstrumentsLang == 0 ) then
 			aInstrumentsType = aInstrumentsLocFiddle;
 		else
-			aInstrumentsType = songbookWindow.aInstrumentsFiddle;
+			aInstrumentsType = Instruments.variants.aFiddle;
 		end
 	elseif ( ( TrackInstrumentName == "harp" ) or ( TrackInstrumentName == "harpe" ) or ( TrackInstrumentName == "harfe" ) ) then
 		if ( TrackInstrumentName == "harp" ) then
 			if ( not searchString ) then
-				sString = "misty";
-				searchString = string.find( sTrack, sString );
+				sString = "misty mountain harp";
+				--searchString = string.find( sTrack, sString );
+				searchString = FindInstrWithSynonyms( sTrack, sString )
 			end
 		elseif ( TrackInstrumentName == "harpe" ) then
 			if ( not searchString ) then
@@ -445,13 +454,13 @@ function GetTrackInstrument( sTrack, aInstrumentsLang )
 		if ( aInstrumentsLang == 0 ) then
 			aInstrumentsType = aInstrumentsLocHarp;
 		else
-			aInstrumentsType = songbookWindow.aInstrumentsHarp;
+			aInstrumentsType = Instruments.variants.aHarp;
 		end
 	elseif ( ( TrackInstrumentName == "lute" ) or ( TrackInstrumentName == "luth" ) or ( TrackInstrumentName == "laute" ) ) then
 		if ( TrackInstrumentName == "lute" ) then
 			if ( not searchString ) then
-				sString = "ages";
-				searchString = string.find( sTrack, sString );
+				sString = "lute of ages";
+				searchString = FindInstrWithSynonyms( sTrack, sString )
 			end
 		elseif ( TrackInstrumentName == "luth" ) then
 			if ( not searchString ) then
@@ -467,7 +476,7 @@ function GetTrackInstrument( sTrack, aInstrumentsLang )
 		if ( aInstrumentsLang == 0 ) then
 			aInstrumentsType = aInstrumentsLocLute;
 		else
-			aInstrumentsType = songbookWindow.aInstrumentsLute;
+			aInstrumentsType = Instruments.variants.aLute;
 		end
 	end
 	
@@ -494,26 +503,54 @@ function GetTrackInstrument( sTrack, aInstrumentsLang )
 	return instrumentIndex, instrumentGenericName, instrumentTypeIndex, instrumentTypeName;
 end
 
+-- Nim: wrapper for assignment
+function GetTrackInstrumentIndex( sTrack, aInstrumentsLang )
+	local iInstr, _, _, _ = GetTrackInstrument( sTrack, aInstrumentsLang )
+	return iInstr
+end
+
 ---------------------------------------------------
 -- Get Track Instrument Type Index and Type Name --
 ---------------------------------------------------
-function GetType( sName , aInstrumentsType )
-	local searchType = nil;
+function GetType( sName, aInstrumentsType )
+	local sLower = sName:lower()
 	for index, name in pairs( aInstrumentsType ) do
-		searchType = string.find( name, sName:lower() );
-		if ( searchType ~= nil ) then
+		local aSynonyms = Instruments.aSynonyms[ name ]
+		if aSynonyms then
+			local sFullName = CheckSynonyms( sLower, aSynonyms )
+			if sFullName then
+				return index, sFullName;
+			end
+		end
+		if string.find( name, sLower ) then
 			return index, name;
 		end
 	end
 	return nil, nil;
 end
 
+function ContainsWholeWord( sInput, sWord )
+    return string.match( sInput, "%f[%a]"..sWord.."%f[%A]" )
+end
+
+function CheckSynonyms( sTrack, aSynonyms )
+	for i = 1, #aSynonyms do
+		local sResult = ContainsWholeWord( sTrack, aSynonyms[i] )
+		if sResult then
+			return sResult
+		end
+	end
+	return nil
+end
+
 --------------------------------
 -- Get Track Instrument Index --
 --------------------------------
-function GetTrackInstrumentIndex ( sName, aInstruments )
+function GetTrackInstrumentIndex( sName, aInstruments )
+	local sNameLC = sName:lower()
 	for index, name in pairs( aInstruments ) do
-		if ( sName:find( name ) ) then
+		local pattern = "%A"..name:lower()
+		if ( sNameLC:find( pattern ) ) then
 			return index;
 		end
 	end
@@ -525,9 +562,26 @@ end
 -----------------------------------------
 function GetInstrument( sTrack, aInstruments )
 	for index, name in pairs( aInstruments ) do
-		if ( sTrack:find( name ) ) then
+		local sFullName = FindInstrWithSynonyms( sTrack, name )
+		if sFullName then
+		--if sTrack:find( name ) then
 			return index, name;
 		end
 	end
+	
 	return nil, nil;
+end
+
+function FindInstrWithSynonyms( sTrack, sInstr )
+	if ContainsWholeWord( sTrack, sInstr ) then
+		return true;
+	end
+	
+	local aSynonyms = Instruments.aSynonyms[ sInstr ]
+
+	if aSynonyms and CheckSynonyms( sTrack, aSynonyms ) then
+		return true
+	end
+	
+	return nil
 end

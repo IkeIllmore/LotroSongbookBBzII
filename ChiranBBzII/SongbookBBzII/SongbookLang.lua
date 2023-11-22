@@ -38,13 +38,12 @@ if ( lang == "en" ) then
 	Strings["cb_desc"] = "Show song list description";
 	Strings["cb_descfirst"] = "In first";
 	Strings["cb_windowvis"] = "Window visible on load";
-	Strings["cb_lastdir"] = "Remember Last Directory";
 	Strings["cb_iconvis"] = "Songbook button visible";
 	Strings["cb_instrvis"] = "Show Instruments";
 	Strings["cb_instrvisHForced"] = "Horizontal"; -- ZEDMOD
 	Strings["ui_btn_opacity"] = "Songbook button opacity";
 	-- Badgers
-	Strings["title"] = ": The Badger Z Chapter II";
+	Strings["title"] = ": The Badger Z Chapter";
 	Strings["filters"] = "Filters";
 	Strings["filterParts"] = "#Parts";
 	Strings["filterArtist"] = "Artist";
@@ -59,20 +58,108 @@ if ( lang == "en" ) then
 	Strings["chat_playerJoinSelf"] = " have joined a"; -- ZEDMOD
 	Strings["chat_playerLeave"] = " has left your";
 	Strings["chat_playerLeaveSelf"] = " leave your"; -- ZEDMOD
+	Strings["chat_playerDismissSelf"] = "You dismiss ";
+	Strings["chat_playerDismiss"] = " has been dismissed";
+	Strings["chat_playerLinkDead"] = " has gone link dead"
 	Strings["ui_badger"] = "Badger settings";
 	Strings["cb_chief"] = "Chief mode";
-	Strings["cb_solo"] = "Solo mode";
 	Strings["cb_timer"] = "Show timer";
 	Strings["cb_timerDown"] = "Count down";
 	Strings["cb_rdyCol"] = "Sync column";
 	Strings["cb_rdyColHL"] = "Highlighting";
-	Strings["instr"] = " required?";
+	Strings["instr"] = "Required: ";
 	Strings["playerlist"] = "Players list"; -- ZEDMOD
 	Strings["players"] = "Players";
+	-- Badgers additions for V095+ (auto assignment with instr. skills/preferences, instr. drop list, etc.)
+	Strings["cb_buttons"] = "Show all buttons";
+	Strings["SongsReloadOk"] = "Song data reloaded."
+	Strings["SongsReloadFail"] = "Could not load song data."
+	Strings["SDOk"] = " Server: SongbookBB data saved.";
+	Strings["SDFail"] = "(SongbookBB) Could not save server data: ";
+	Strings["reloadBtn"] = "Reload song database";
+	Strings["reloadMsg"] = "This will reload the song database without having to reload the Songbook plugin.\nNote that there will be a delay - watch for the message in the chat window.\n\nClick reload again to proceed, or anywhere outside this panel to close."
+	Strings["informBtn"] = "Post Skills";
+	Strings["assignBtn"] = "Assign...";
+	Strings["assignWnd"] = "Parts Assignment";
+	Strings["asnSkillsWnd"] = "Instrument Skills";
+	Strings["assignPriosWnd"] = "Instrument Preferences";
+	Strings["edit_skills"] = "Edit";
+	Strings["receive_skills"] = "Receive";
+	Strings["asn_list"] = "Parts List";
+	Strings["asn_player"] = "Player";
+	Strings["asn_part"] = "Part";
+	Strings["asn_inactive"] = "(inactive)";
+	Strings["asn_nextSong"] = "Next song";
+	Strings["asn_chat"] = "Announce to";
+	Strings["asn_chat_auto"] = "Auto";
+	Strings["asn_chat_group"] = "Group";
+	Strings["asn_chat_raid"] = "Raid";
+	Strings["asn_chat_custom"] = "Custom:";
+	Strings["asn_btn_create"] = "Create";
+	Strings["asnSk_btnLaunch"] = "Skills...";
+	Strings["asnPrio_btnLaunch"] = "Preferences...";
+	Strings["asn_btn_announce"] = "Announce";
+	Strings["asn_removePartial"] = "Remove from partial announce"
+	Strings["asn_addPartial"] = "Add to partial announce"
+	Strings["asn_clearPartial"] = "Clear partial announcement"
+	Strings["asn_include"] = "Include"
+	Strings["asn_exclude"] = "Exclude"
+	Strings["asn_clearExclusion"] = "Clear exclusions"
+	Strings["asn_vocalist"] = "Vocalist"
+	Strings["asn_clearVocalists"] = "Clear vocalists"
+	Strings["asn_clearSelection"] = "Clear Selection"
+	Strings["asn_assign"] = "Assign"
+	Strings["asn_btn_save_skills"] = "Save";
+	Strings["asn_btn_revert_skills"] = "Revert";
+	Strings["asnSk_setcol"] = "Set all in column"; -- tick all checkboxes in the column
+	Strings["asnSk_setall"] = "Set all"; -- tick all checkboxes
+	Strings["asnSk_clrcol"] = "Clear all in column";
+	Strings["asnSk_clrall"] = "Clear all";
+	Strings["asnSk_clrsel"] = "Clear Selection";
+	Strings["asnSk_copycol"] = "Copy column"
+	Strings["asnSk_pastecol"] = "Paste column"
+	Strings["asnSk_transfer"] = "Check Instrument Slots"
+	Strings["asnSk_rejectcol"] = "Reject column changes"
+	Strings["asnSk_acceptcol"] = "Accept column changes"
+	Strings["asnSk_rejectall"] = "Reject all changes"
+	Strings["asnSk_acceptall"] = "Accept all changes"
+	Strings["asnSk_send"] = "Send to >"
+	Strings["asnSk_wrongFormat"] = "Incorrect data string format received"
+	Strings["asnSk_wrongVersion"] = "Possible version mismatch"
+	Strings["asnSk_invalidData"] = "Invalid data received"
+	Strings["asnSk_invalidHdr"] = "Invalid data header received"
+	Strings["asnSk_noData"] = "No skill info available for "
+	Strings["asn_prios_current"] = "Party/Raid";
+	Strings["asn_prios_all"] = "Known players";
+	Strings["asn_addPlayer"] = "Add player";
+	Strings["asn_enterPlayer"] = "Enter player"
+	Strings["asn_removePlayer"] = "Remove player";
+	Strings["asn_removeSelPlayers"] = "Remove selected players";
+	Strings["asn_notEnoughPlayers"] = "Not enough players available";
+	Strings["asn_noSkillsSingular"] = "doesn't";
+	Strings["asn_noSkillsPlural"] = "don't";
+	Strings["asn_noSkillsEnding"] = " seem to have any suitable instrument skills for this song.";
+	Strings["asn_noInstrument"] = "(No instrument detected)"
+	Strings["asn_selSongSetup"] = "Please select a song (and a setup if available) in the main window."
+	Strings["asn_noInstrDet"] = "No instrument detected in"
+	Strings["asn_noSetupAvail"] = "No setup for the number of active players available."
+	Strings["asn_needFsOrRaid"] = "You need to be in a fellowship or raid."
+	Strings["asn_postSkills1"] = "This will scan your instrument quickslots and notify your group leader ("
+	Strings["asn_postSkills2"] = ") of the instruments you can play, so they can do the instrument assignments."
+	Strings["asn_postSkills3"] = "Click the 'Send' button to proceed."
+	Strings["asn_asDone"] = "Assignment done."
+	Strings["asn_asFail"] = "No assignment found"
+	Strings["asn_asNoPlayers"] = "no players for "
+	
 	-- ZEDMOD: Add New Instruments ( Fiddle and Bassoon )
 	-- doubling word fiddle because german got two word as fiedel and giese
+	-- (Nim) Removed doubled fiddle and made Fiedel and Geige synonyms
 	--aInstrumentsLoc = { "bagpipe", "clarinet", "cowbell", "drum", "flute", "harp", "horn", "lute", "pibgorn", "theorbo" }; -- Original
-	aInstrumentsLoc = { "bagpipe", "bassoon", "clarinet", "cowbell", "drum", "fiddle", "fiddle", "flute", "harp", "horn", "lute", "pibgorn", "theorbo" };
+	aInstrumentsLoc =
+	{	-- (Nim) Removed the doubled base entry for fiddle: German Geige is now a syn for Fiedel
+	--"bagpipe", "bassoon", "clarinet", "cowbell", "drum", "fiddle", "fiddle", "flute", "harp", "horn", "lute", "pibgorn", "theorbo"
+		"bagpipe", "bassoon", "clarinet", "cowbell", "drum", "fiddle", "flute", "harp", "horn", "lute", "pibgorn", "theorbo"
+	};
 	-- /ZEDMOD
 	-- ZEDMOD: Additonnal Instruments to distinguish between basic and specifics
 	aInstrumentsLocBassoon = { "basic bassoon", "lonely mountain bassoon", "brusque bassoon" };
@@ -144,13 +231,12 @@ elseif ( lang == "de" ) then
 	Strings["cb_desc"] = "Beschreibung Liedliste anzeigen";
 	Strings["cb_descfirst"] = "Zuerst";
 	Strings["cb_windowvis"] = "Fenster beim Start anzeigen";
-	Strings["cb_lastdir"] = "Last directory on load";
 	Strings["cb_iconvis"] = "Songbookknopf anzeigen";
 	Strings["cb_instrvis"] = "Instrumente anzeigen";
 	Strings["cb_instrvisHForced"] = "Horizontale"; -- ZEDMOD
 	Strings["ui_btn_opacity"] = "Songbookknopf Sichtbarkeit";
-	-- Badgers
-	Strings["title"] = ": Das Z Badger-Kapitel II";
+	-- Badgers additions for V0.94+ (players list, ready state indication, filters, etc.)
+	Strings["title"] = ": Das Z Badger-Kapitel";
 	Strings["filters"] = "Filter";
 	Strings["filterParts"] = "#Spieler";
 	Strings["filterArtist"] = "K\195\188nstler";
@@ -165,19 +251,106 @@ elseif ( lang == "de" ) then
 	Strings["chat_playerJoinSelf"] = " habt Euch einer Gruppe"; -- ZEDMOD
 	Strings["chat_playerLeave"] = " hat Eure";
 	Strings["chat_playerLeaveSelf"] = " verlasst Eure Gruppe"; -- ZEDMOD
+	Strings["chat_playerDismissSelf"] = "You dismiss ";
+	Strings["chat_playerDismiss"] = " has been dismissed";
+	Strings["chat_playerLinkDead"] = " has gone link dead from"
 	Strings["ui_badger"] = "Badger-Einstellungen";
 	Strings["cb_chief"] = "Bandleader";
-	Strings["cb_solo"] = "Solo-modus";
 	Strings["cb_timer"] = "Laufzeit";
 	Strings["cb_timerDown"] = "R\195\188ckw\195\164rts";
 	Strings["cb_rdyCol"] = "Sync-Spalte";
 	Strings["cb_rdyColHL"] = "Sync-Hervorhebung";
-	Strings["instr"] = " ben\195\182tigt?";
+	Strings["instr"] = "Ben\195\182tigt: ";
 	Strings["playerlist"] = "Spielerliste"; -- ZEDMOD
 	Strings["players"] = "Spieler";
-	-- ZEDMOD: Add New Instruments ( Fiddle and Bassoon )
+	-- Badgers additions for V095+ (auto assignment with instr. skills/preferences, instr. drop list, etc.)
+	Strings["cb_buttons"] = "Show all buttons";
+	Strings["SongsReloadOk"] = "Song data reloaded."
+	Strings["SongsReloadFail"] = "Could not load song data."
+	Strings["SDOk"] = " Server: SongbookBB data saved.";
+	Strings["SDFail"] = "(SongbookBB) Could not save server data: ";
+	Strings["reloadBtn"] = "Reload song database";
+	Strings["reloadMsg"] = "This will reload the song database without having to reload the Songbook plugin.\nNote that there will be a delay - watch for the message in the chat window.\n\nClick reload again to proceed, or anywhere outside this panel to close."
+	Strings["informBtn"] = "Post Skills";
+	Strings["assignBtn"] = "Assign...";
+	Strings["assignWnd"] = "Parts Assignment";
+	Strings["asnSkillsWnd"] = "Instrument Skills";
+	Strings["assignPriosWnd"] = "Instrument Preferences";
+	Strings["edit_skills"] = "Edit";
+	Strings["receive_skills"] = "Receive";
+	Strings["asn_list"] = "Parts List";
+	Strings["asn_player"] = "Player";
+	Strings["asn_part"] = "Part";
+	Strings["asn_inactive"] = "(inactive)";
+	Strings["asn_nextSong"] = "Next song";
+	Strings["asn_chat"] = "Announce to";
+	Strings["asn_chat_auto"] = "Auto";
+	Strings["asn_chat_group"] = "Group";
+	Strings["asn_chat_raid"] = "Raid";
+	Strings["asn_chat_custom"] = "Custom:";
+	Strings["asn_btn_create"] = "Create";
+	Strings["asnSk_btnLaunch"] = "Skills...";
+	Strings["asnPrio_btnLaunch"] = "Preferences...";
+	Strings["asn_btn_announce"] = "Announce";
+	Strings["asn_removePartial"] = "Remove from partial announce"
+	Strings["asn_addPartial"] = "Add to partial announce"
+	Strings["asn_clearPartial"] = "Clear partial announcement"
+	Strings["asn_include"] = "Include"
+	Strings["asn_exclude"] = "Exclude"
+	Strings["asn_clearExclusion"] = "Clear exclusions"
+	Strings["asn_vocalist"] = "Vocalist"
+	Strings["asn_clearVocalists"] = "Clear vocalists"
+	Strings["asn_clearSelection"] = "Clear Selection"
+	Strings["asn_assign"] = "Assign"
+	Strings["asn_btn_save_skills"] = "Save";
+	Strings["asn_btn_revert_skills"] = "Revert";
+	Strings["asnSk_setcol"] = "Set all in column"; -- tick all checkboxes in the column
+	Strings["asnSk_setall"] = "Set all"; -- tick all checkboxes
+	Strings["asnSk_clrcol"] = "Clear all in column";
+	Strings["asnSk_clrall"] = "Clear all";
+	Strings["asnSk_clrsel"] = "Clear Selection";
+	Strings["asnSk_copycol"] = "Copy column"
+	Strings["asnSk_pastecol"] = "Paste column"
+	Strings["asnSk_transfer"] = "Check Instrument Slots"
+	Strings["asnSk_rejectcol"] = "Reject column changes"
+	Strings["asnSk_acceptcol"] = "Accept column changes"
+	Strings["asnSk_rejectall"] = "Reject all changes"
+	Strings["asnSk_acceptall"] = "Accept all changes"
+	Strings["asnSk_send"] = "Send to >"
+	Strings["asnSk_wrongFormat"] = "Incorrect data string format received"
+	Strings["asnSk_wrongVersion"] = "Possible version mismatch"
+	Strings["asnSk_invalidData"] = "Invalid data received"
+	Strings["asnSk_invalidHdr"] = "Invalid data header received"
+	Strings["asnSk_noData"] = "No skill info available for "
+	Strings["asn_prios_current"] = "Party/Raid";
+	Strings["asn_prios_all"] = "Known players";
+	Strings["asn_addPlayer"] = "Add player";
+	Strings["asn_enterPlayer"] = "Enter player"
+	Strings["asn_removePlayer"] = "Remove player";
+	Strings["asn_removeSelPlayers"] = "Remove selected players";
+	Strings["asn_notEnoughPlayers"] = "Not enough players available";
+	Strings["asn_noSkillsSingular"] = "doesn't";
+	Strings["asn_noSkillsPlural"] = "don't";
+	Strings["asn_noSkillsEnding"] = " seem to have any suitable instrument skills for this song.";
+	Strings["asn_noInstrument"] = "(No instrument detected)"
+	Strings["asn_selSongSetup"] = "Please select a song (and a setup if available) in the main window."
+	Strings["asn_noInstrDet"] = "No instrument detected in"
+	Strings["asn_noSetupAvail"] = "No setup for the number of active players available."
+	Strings["asn_needFsOrRaid"] = "You need to be in a fellowship or raid."
+	Strings["asn_postSkills1"] = "This will scan your instrument quickslots and notify your group leader ("
+	Strings["asn_postSkills2"] = ") of the instruments you can play, so they can do the instrument assignments."
+	Strings["asn_postSkills3"] = "Click the 'Send' button to proceed."
+	Strings["asn_asDone"] = "Assignment done."
+	Strings["asn_asFail"] = "No assignment found"
+	Strings["asn_asNoPlayers"] = "no players for "
+
+-- ZEDMOD: Add New Instruments ( Fiddle and Bassoon )
 	--aInstrumentsLoc = { "dudelsack", "klarinette", "glocke", "trommel", "fl\195\182te", "harfe", "horn", "laute", "pibgorn", "theorbe" }; -- Original
-	aInstrumentsLoc = { "dudelsack", "fagott", "klarinette", "glocke", "trommel", "fiedel", "geige", "flote", "harfe", "horn", "laute", "pibgorn", "theorbe" };
+	aInstrumentsLoc =
+	{	-- removed the separate entry for Geige, which is now a syn
+	--"dudelsack", "fagott", "klarinette", "glocke", "trommel", "fiedel", "geige", "flote", "harfe", "horn", "laute", "pibgorn", "theorbe"
+		"dudelsack", "fagott", "klarinette", "glocke", "trommel", "fiedel", "flote", "harfe", "horn", "laute", "pibgorn", "theorbe"
+	};
 	-- /ZEDMOD
 	-- ZEDMOD: Additonnal Instruments to distinguish between basic and specifics
 	aInstrumentsLocBassoon = { "standard-fagott", "fagott vom einsamen berg", "schroffes fagott" };
@@ -249,13 +422,12 @@ elseif ( lang == "fr" ) then
 	Strings["cb_desc"] = "Description liste chansons";
 	Strings["cb_descfirst"] = "En premier";
 	Strings["cb_windowvis"] = "Fen\195\170tre visible au chargement";
-	Strings["cb_lastdir"] = "Last directory on load";
 	Strings["cb_iconvis"] = "Bouton SongBook visible";
 	Strings["cb_instrvis"] = "Instruments Visibles";
 	Strings["cb_instrvisHForced"] = "Horizontal"; -- ZEDMOD
 	Strings["ui_btn_opacity"] = "Opacit\195\169 du bouton Songbook";
 	-- Badgers
-	Strings["title"] = ": The Badger Z Chapter II";
+	Strings["title"] = ": The Badger Z Chapter";
 	Strings["filters"] = "Filtres";
 	Strings["filterParts"] = "#Joueurs";
 	Strings["filterArtist"] = "Artiste";
@@ -270,20 +442,107 @@ elseif ( lang == "fr" ) then
 	Strings["chat_playerJoinSelf"] = " avez rejoint une"; -- ZEDMOD
 	Strings["chat_playerLeave"] = " a quitt\195\169 votre ";
 	Strings["chat_playerLeaveSelf"] = " quittez votre "; -- ZEDMOD
+	Strings["chat_playerDismissSelf"] = "You dismiss ";
+	Strings["chat_playerDismiss"] = " has been dismissed";
+	Strings["chat_playerLinkDead"] = " has gone link dead from"
 	Strings["ui_badger"] = "Param\195\168tres Badger";
 	Strings["cb_chief"] = "Mode Chef";
-	Strings["cb_solo"] = "Mode solo";
 	Strings["cb_timer"] = "Voir compteur";
 	Strings["cb_timerDown"] = "D\195\169compter";
 	Strings["cb_rdyCol"] = "Colonne Synch"; -- Note: This needs to be rather short (two checkboxes on the same line)
 	Strings["cb_rdyColHL"] = "Surbrillance";
-	Strings["instr"] = " requis?";
+	Strings["instr"] = "Requis: ";
 	Strings["playerlist"] = "Liste Musiciens"; -- ZEDMOD
 	Strings["players"] = "Musiciens";
+	-- Badgers additions for V095+ (auto assignment with instr. skills/preferences, instr. drop list, etc.)
+	Strings["cb_buttons"] = "Show all buttons";
+	Strings["SongsReloadOk"] = "Song data reloaded."
+	Strings["SongsReloadFail"] = "Could not load song data."
+	Strings["SDOk"] = " Server: SongbookBB data saved.";
+	Strings["SDFail"] = "(SongbookBB) Could not save server data: ";
+	Strings["reloadBtn"] = "Reload song database";
+	Strings["reloadMsg"] = "This will reload the song database without having to reload the Songbook plugin.\nNote that there will be a delay - watch for the message in the chat window.\n\nClick reload again to proceed, or anywhere outside this panel to close."
+	Strings["informBtn"] = "Post Skills";
+	Strings["assignBtn"] = "Assign...";
+	Strings["assignWnd"] = "Parts Assignment";
+	Strings["asnSkillsWnd"] = "Instrument Skills";
+	Strings["assignPriosWnd"] = "Instrument Preferences";
+	Strings["edit_skills"] = "Edit";
+	Strings["receive_skills"] = "Receive";
+	Strings["asn_list"] = "Parts List";
+	Strings["asn_player"] = "Player";
+	Strings["asn_part"] = "Part";
+	Strings["asn_inactive"] = "(inactive)";
+	Strings["asn_nextSong"] = "Next song";
+	Strings["asn_chat"] = "Announce to";
+	Strings["asn_chat_auto"] = "Auto";
+	Strings["asn_chat_group"] = "Group";
+	Strings["asn_chat_raid"] = "Raid";
+	Strings["asn_chat_custom"] = "Custom:";
+	Strings["asn_btn_create"] = "Create";
+	Strings["asnSk_btnLaunch"] = "Skills...";
+	Strings["asnPrio_btnLaunch"] = "Preferences...";
+	Strings["asn_btn_announce"] = "Announce";
+	Strings["asn_removePartial"] = "Remove from partial announce"
+	Strings["asn_addPartial"] = "Add to partial announce"
+	Strings["asn_clearPartial"] = "Clear partial announcement"
+	Strings["asn_include"] = "Include"
+	Strings["asn_exclude"] = "Exclude"
+	Strings["asn_clearExclusion"] = "Clear exclusions"
+	Strings["asn_vocalist"] = "Vocalist"
+	Strings["asn_clearVocalists"] = "Clear vocalists"
+	Strings["asn_clearSelection"] = "Clear Selection"
+	Strings["asn_assign"] = "Assign"
+	Strings["asn_btn_save_skills"] = "Save";
+	Strings["asn_btn_revert_skills"] = "Revert";
+	Strings["asnSk_setcol"] = "Set all in column"; -- tick all checkboxes in the column
+	Strings["asnSk_setall"] = "Set all"; -- tick all checkboxes
+	Strings["asnSk_clrcol"] = "Clear all in column";
+	Strings["asnSk_clrall"] = "Clear all";
+	Strings["asnSk_clrsel"] = "Clear Selection";
+	Strings["asnSk_copycol"] = "Copy column"
+	Strings["asnSk_pastecol"] = "Paste column"
+	Strings["asnSk_transfer"] = "Check Instrument Slots"
+	Strings["asnSk_rejectcol"] = "Reject column changes"
+	Strings["asnSk_acceptcol"] = "Accept column changes"
+	Strings["asnSk_rejectall"] = "Reject all changes"
+	Strings["asnSk_acceptall"] = "Accept all changes"
+	Strings["asnSk_send"] = "Send to >"
+	Strings["asnSk_wrongFormat"] = "Incorrect data string format received"
+	Strings["asnSk_wrongVersion"] = "Possible version mismatch"
+	Strings["asnSk_invalidData"] = "Invalid data received"
+	Strings["asnSk_invalidHdr"] = "Invalid data header received"
+	Strings["asnSk_noData"] = "No skill info available for "
+	Strings["asn_prios_current"] = "Party/Raid";
+	Strings["asn_prios_all"] = "Known players";
+	Strings["asn_addPlayer"] = "Add player";
+	Strings["asn_enterPlayer"] = "Enter player"
+	Strings["asn_removePlayer"] = "Remove player";
+	Strings["asn_removeSelPlayers"] = "Remove selected players";
+	Strings["asn_notEnoughPlayers"] = "Not enough players available";
+	Strings["asn_noSkillsSingular"] = "doesn't";
+	Strings["asn_noSkillsPlural"] = "don't";
+	Strings["asn_noSkillsEnding"] = " seem to have any suitable instrument skills for this song.";
+	Strings["asn_noInstrument"] = "(No instrument detected)"
+	Strings["asn_selSongSetup"] = "Please select a song (and a setup if available) in the main window."
+	Strings["asn_noInstrDet"] = "No instrument detected in"
+	Strings["asn_noSetupAvail"] = "No setup for the number of active players available."
+	Strings["asn_needFsOrRaid"] = "You need to be in a fellowship or raid."
+	Strings["asn_postSkills1"] = "This will scan your instrument quickslots and notify your group leader ("
+	Strings["asn_postSkills2"] = ") of the instruments you can play, so they can do the instrument assignments."
+	Strings["asn_postSkills3"] = "Click the 'Send' button to proceed."
+	Strings["asn_asDone"] = "Assignment done."
+	Strings["asn_asFail"] = "No assignment found"
+	Strings["asn_asNoPlayers"] = "no players for "
+
 	-- ZEDMOD: Add New Instruments ( Fiddle and Bassoon )
 	-- doubling word violon because german got two word as fiedel and giese
 	-- aInstrumentsLoc = { "cornemuse", "clarinette", "cloche de vache", "tambour", "fl\195\187t", "harpe", "cor", "luth", "pibgorn", "th\195\169orbe" }; -- Original
-	aInstrumentsLoc = { "cornemuse", "basson", "clarinette", "cloche", "tambour", "violon", "violon", "flute", "harpe", "cor", "luth", "pibgorn", "theorbe" };
+	aInstrumentsLoc =
+	{
+	--"cornemuse", "basson", "clarinette", "cloche", "tambour", "violon", "violon", "flute", "harpe", "cor", "luth", "pibgorn", "theorbe"
+		"cornemuse", "basson", "clarinette", "cloche", "tambour", "violon", "flute", "harpe", "cor", "luth", "pibgorn", "theorbe"
+	};
 	-- /ZEDMOD
 	-- ZEDMOD: Additonnal Instruments to distinguish between basic and specifics
 	aInstrumentsLocBassoon = { "basson de base", "basson du mont solitaire", "basson brusque" };
